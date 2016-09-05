@@ -134,3 +134,6 @@ console.log( getCookie( "person" )); "{"name":"ke","age":"1",}"
 #####Web Storage
 Unlike the cookie, all data stored within localStorage will not be set to expire.
 ######Web Storage Interface
+
+####CHAPTER 8 Data Interchange
+
