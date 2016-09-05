@@ -41,9 +41,10 @@ padding (only works on objects and strings
 ######reviver
 ```
 var p=new Person();
-    p.name="ben";
-    p.age="36";
-    p.gender="male";
+    p.name="ke";
+Person.prototype.getName=function(){
+    return this.name;
+};
 ```
 reviver function
 ```
@@ -59,6 +60,8 @@ var reviver = function(k,v){
 }
 
 var parsedJSON = JSON.parse( serializedPerson , reviver );
+console.log(parsedJSON instanceof Person); // true
+console.log(parsedJSON.getName()); // "ke"
 ```
 ####CHAPTER 7 Persisting JSON: I
 #####HTTP Cookie
@@ -92,3 +95,39 @@ document.cookie= "ourThirdCookie=789";
 The name/value pairs are not being overridden with each new assignment.  
 [mdn doc](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)  
 Rather, they stored safely within the cookie jar. 
+
+######Extracting the Value from a Specified Key Among Many
+```
+function getCookie(name) {
+     var regExp = new RegExp(name + "=[^\;]*", "mgi");
+     var matchingValue = (document.cookie).match(regExp);
+     console.log( matchingValue )   // "k=v" array
+     for(var key in matchingValue){  //iterate all (k,v) pairs
+         var replacedValue=matchingValue[key].replace(name+"=",""); //remove "k="
+         matchingValue[key]=replacedValue;  //assign "v
+     }
+     return matchingValue;
+ };
+ getCookie("ourFourthCookie");  // ["That would bring us back to Doe"] the line numbers.
+```
+If store an object to cookie, must convert to json first.
+```
+function Person() {
+    this.name;
+    this.age;
+};
+Person.prototype.getName = function() {
+    return this.name;
+};
+Person.prototype.getAge = function() {
+    return this.age;
+};
+
+var p = new Person();
+p.name = "ke";
+p.age = "1";
+
+var serializedPerson = JSON.stringify(p);
+setCookie("person", serializedPerson, new Date("Jan 1 2017"),"/",".yd.me",null);
+console.log( getCookie( "person" )); "{"name":"ke","age":"1",}"
+```
