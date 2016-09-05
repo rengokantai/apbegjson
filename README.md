@@ -69,10 +69,10 @@ var date= new Date("Jan 1 2015 12:00 AM");
 var UTCdate= date.toUTCString() ;
 console.log( UTCdate );  // "Thu, 01 Jan 2015 06:00:00 GMT"
 ```
-If the value supplied to the expires attribute occurs in the past, the cookie is immediately purged from memory. On the other hand, if the expires attribute is omitted, then the cookie will be discarded the moment the session has ended.  
+If the value supplied to the expires attribute occurs in the past, the cookie is immediately purged from memory. On the other hand, if the expires attribute is omitted, then the cookie will be discarded the moment the session has ended.   
 ######max-age
- max-age specifies the life span of the cookie in seconds.
- ######domain
+max-age specifies the life span of the cookie in seconds.  
+######domain  
 Explicitly defines the domain(s) to which the cookie is to be made available.  
 to broaden the scope of cookies, we can use . to precede our domain. set domain attribute to
 ```
@@ -83,3 +83,12 @@ The path attribute further enforces to which subdirectories a cookie is availabl
 (check with the examples)  
 ######httponly
 Cookies set with the httponly flag can only be set by the server.
+#####document.cookie
+```
+document.cookie= "ourFirstCookie=123";
+document.cookie= "ourSecondCookie=456";
+document.cookie= "ourThirdCookie=789";
+```
+The name/value pairs are not being overridden with each new assignment.  
+[mdn doc](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)  
+Rather, they stored safely within the cookie jar. 
