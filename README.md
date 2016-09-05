@@ -60,4 +60,26 @@ var reviver = function(k,v){
 
 var parsedJSON = JSON.parse( serializedPerson , reviver );
 ```
+####CHAPTER 7 Persisting JSON: I
+#####HTTP Cookie
+######expires
+The value supplied is required to be in UTC Greenwich Mean Time format. 
 ```
+var date= new Date("Jan 1 2015 12:00 AM");
+var UTCdate= date.toUTCString() ;
+console.log( UTCdate );  // "Thu, 01 Jan 2015 06:00:00 GMT"
+```
+If the value supplied to the expires attribute occurs in the past, the cookie is immediately purged from memory. On the other hand, if the expires attribute is omitted, then the cookie will be discarded the moment the session has ended.  
+######max-age
+ max-age specifies the life span of the cookie in seconds.
+ ######domain
+Explicitly defines the domain(s) to which the cookie is to be made available.  
+to broaden the scope of cookies, we can use . to precede our domain. set domain attribute to
+```
+.yd.me
+```
+######path
+The path attribute further enforces to which subdirectories a cookie is available. If a path attribute is not explicitly specified, the value is defaulted to the current directory that set the cookie.  
+(check with the examples)  
+######httponly
+Cookies set with the httponly flag can only be set by the server.
