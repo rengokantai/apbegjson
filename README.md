@@ -131,3 +131,6 @@ var serializedPerson = JSON.stringify(p);
 setCookie("person", serializedPerson, new Date("Jan 1 2017"),"/",".yd.me",null);
 console.log( getCookie( "person" )); "{"name":"ke","age":"1",}"
 ```
+#####Web Storage
+Unlike the cookie, all data stored within localStorage will not be set to expire.
+######Web Storage Interface
