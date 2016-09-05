@@ -19,3 +19,5 @@ console.log(k) ;   //String { 0="t", 1="e", 2="s", 3="t" }
 #####toString
 It is worth noting that the toString method does not return a string object, but rather the primitive-type string.
 
+######The Implicit String Object
+####CHAPTER 5 Creating JSON
