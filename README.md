@@ -187,3 +187,79 @@ Content-Type
 Expires
 Last-Modified
 ```
+
+response headers
+```
+Accept-Ranges
+Age
+ETag
+Location
+Proxy-Authentication
+Retry-After
+Server
+Vary
+WWW-Authenticate
+```
+#####XMLHttpRequest Interface
+
+######The Request Aspect
+setRequestHeader
+```
+setRequestHeader( field , value );
+```
+we can set custom header and most header,but we can not set
+```
+Accept-Charset
+Accept-Encoding
+Accept-Control-Request-Headers
+Access-Control-Request-Method
+Connection
+Content-Length
+```
+#####The Response Aspect
+######getAllResponseHeaders  
+######getResponseHeader(k)
+```
+var xhr = new XMLHttpRequest();
+ xhr.open("POST", "http://json.sandboxed.guru/chapter8/exercise.php");
+ xhr.setRequestHeader("Content-Type", "application/json");
+ xhr.setRequestHeader("Accept", "application/json");
+ xhr.onreadystatechange = changeInState;
+ xhr.send('{"k":"v"}');
+
+ function changeInState() {
+     var data;
+     if (this.readyState === 4 && this.status === 200) {
+     var mime = this.getResponseHeader("content-type").toLowerCase();
+          if (mime.indexOf('json'))) {
+               data = JSON.parse(this.responseText);
+          } else if (mime.indexOf('xml'))) {
+               data = this.responseXML;
+          }
+     }
+ }
+ ```
+#####Obtaining the Response
+######response
+```
+ 1 var xhr = new XMLHttpRequest();
+ 2     xhr.open("POST", "http://json.sandboxed.guru/chapter8/exercise.php");
+ 3     xhr.setRequestHeader("Content-Type", "application/json");
+ 4     xhr.setRequestHeader("Accept", "application/json");
+ 5     xhr.onreadystatechange = changeInState;
+ 6     xhr.responseType = "json";       //HERE we assign responseType
+ 7     xhr.send('{"fname":"ben","lname":"smith"}');
+ 8
+ 9 function changeInState() {
+10    var data;
+11     if (this.readyState === 4 && this.status === 200) {
+12     var mime = this.getResponseHeader("content-type").toLowerCase();
+13          if (mime.indexOf('json'))) {
+14               data = this.response;          //Only use this.response
+15          } else if (mime.indexOf('xml'))) {
+16               data = this.responseXML;
+17          }
+18     }
+19 }
+```
+####CHAPTER 9 X-Origin Resources
