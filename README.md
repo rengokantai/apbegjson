@@ -263,3 +263,7 @@ var xhr = new XMLHttpRequest();
 19 }
 ```
 ####CHAPTER 9 X-Origin Resources
+#####Same-Origin Policy(SOP)
+domain,port,scheme(http and https) must be same
+
+#####JSONP
