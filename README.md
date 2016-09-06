@@ -136,4 +136,54 @@ Unlike the cookie, all data stored within localStorage will not be set to expire
 ######Web Storage Interface
 
 ####CHAPTER 8 Data Interchange
-
+######HTTP-Request
+- Request line required. (ex: http://yd.me/index.php)
+- Header notrequired
+- Entity Body notrequired
+General headers
+```
+Cache-Control
+Connection
+Date
+Pragma
+Trailer
+Transfer-Encoding
+Upgrade
+Via
+Warning
+```
+Request Headers
+```
+Accept
+Accept-Charset
+Accept-Encoding
+Accept-Language
+Authorization
+Expect
+From
+Host
+If-Match
+If-Modified-Since
+If-None-Match
+If-Range
+If-Unmodified-Since
+Max-Forwards
+Proxy-Authorization
+Range
+Referer
+TE
+User-Agent
+```
+Entity headers
+```
+Allow
+Content-Encoding
+Content-Languages
+Content-Length
+Content-Location
+Content-MD5
+Content-Range
+Content-Type
+Expires
+Last-Modified
+```
